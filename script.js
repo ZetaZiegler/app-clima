@@ -27,6 +27,7 @@ function mostrarDatosClima(data){
     const humedad = data.main.humidity
     const veloViento = data.wind.speed
     const direViento = data.wind.deg
+    const difRota = 135
 
     const ciudadTitulo = document.createElement('h2')
     ciudadTitulo.textContent = `${ciudadNombre}, ${pais}`
@@ -46,10 +47,14 @@ function mostrarDatosClima(data){
     const vientoInfo = document.createElement('p')
     vientoInfo.textContent = `La velocidad del viento es de ${Math.floor(veloViento * 3.6)} Km/h`
 
+    const vientoDire = document.getElementById('flechaViento').style.transform = `rotate(${direViento - difRota}deg)`
+    document.getElementById('flechaViento').style.visibility = "visible"
+    
     divDatosClima.appendChild(ciudadTitulo)
     divDatosClima.appendChild(temperaturaInfo)
     divDatosClima.appendChild(humedadInfo)
-    divDatosClima.appendChild(vientoInfo)
     divDatosClima.appendChild(iconoInfo)
     divDatosClima.appendChild(descripcionInfo)
+    divDatosClima.appendChild(vientoInfo)
+    divDatosClima.appendChild(vientoDire)
 }
